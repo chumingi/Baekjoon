@@ -1,13 +1,9 @@
-N = int(input())
+N = input()
 digit_count = [0] * 10
 
-while N > 0:
-    digit_count[N % 10] += 1
-    N //= 10
+for digit in N:
+    digit_count[int(digit)] += 1
 
-six_and_nine = (digit_count.pop(6) + digit_count.pop(8) + 1) // 2
-another_max = max(digit_count)
-if (six_and_nine > another_max):
-    print(six_and_nine)
-else:
-    print(another_max)
+six_and_nine = (digit_count[6] + digit_count[9] + 1) // 2
+digit_count[6] = digit_count[9] = 0
+print(max(max(digit_count), six_and_nine))
