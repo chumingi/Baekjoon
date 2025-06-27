@@ -1,9 +1,10 @@
-from collections import Counter
+a = input()
+b = input()
+freq = [0] * 26
 
-first = input()
-second = input()
+for ch in a:
+    freq[ord(ch) - ord('a')] += 1
+for ch in b:
+    freq[ord(ch) - ord('a')] -= 1
 
-diff = Counter(first) - Counter(second)
-diff += Counter(second) - Counter(first)
-
-print(sum(diff.values()))
+print(sum(abs(x) for x in freq))
