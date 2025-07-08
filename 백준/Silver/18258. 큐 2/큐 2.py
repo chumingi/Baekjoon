@@ -1,24 +1,25 @@
 from collections import deque
 import sys
 input = sys.stdin.readline
-write = sys.stdout.write
 
 N = int(input())
 queue = deque()
+results = []
 
 for _ in range(N):
     cmd = input().strip()
 
     if cmd == "pop":
-        write(queue.popleft() + "\n") if queue else write("-1\n")
+        results.append(queue.popleft() if queue else "-1")
     elif cmd == "size":
-        write(str(len(queue)) + "\n")
+        results.append(str(len(queue)))
     elif cmd == "empty":
-        write("1\n") if not queue else write("0\n")
+        results.append("0" if queue else "1")
     elif cmd == "front":
-        write(queue[0] + "\n") if queue else write("-1\n")
+        results.append(queue[0] if queue else "-1")
     elif cmd == "back":
-        write(queue[-1] + "\n") if queue else write("-1\n")
+        results.append(queue[-1] if queue else "-1")
     else:
-        _, X = cmd.split()
-        queue.append(X)
+        _, x = cmd.split()
+        queue.append(x)
+sys.stdout.write("\n".join(results) + "\n")
