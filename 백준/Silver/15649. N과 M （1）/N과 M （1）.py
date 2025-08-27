@@ -16,6 +16,7 @@
 
 import sys
 input = sys.stdin.readline
+write = sys.stdout.write
 
 N, M = map(int, input().split())
 res = []
@@ -23,7 +24,7 @@ chk = [False] * (N+1)
 
 def recur(number):
     if number == M:
-        print(' '.join(list(map(str, res))))
+        write(' '.join(list(map(str, res))) + "\n")
         return
     
     for i in range(1, N+1):
