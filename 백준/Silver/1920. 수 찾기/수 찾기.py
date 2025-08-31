@@ -27,6 +27,7 @@ res = []
 nums.sort()
 
 # 이진 탐색
+"""
 def binary_search(low, high, target):
     if low > high or nums[high] < target:
         res.append(0)
@@ -43,3 +44,10 @@ def binary_search(low, high, target):
 for t in target_list:
     binary_search(0, n-1, t)
 sys.stdout.write("\n".join(list(map(str, res))))
+"""
+
+import bisect
+for t in target_list:
+    i = bisect.bisect_left(nums, t)
+    res.append('1' if i < len(nums) and nums[i] == t else '0')
+sys.stdout.write("\n".join(list(res)))
